@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '26418329514421195');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=26418329514421195&ev=PageView&noscript=1"
+    /></noscript>
+<!-- End Meta Pixel Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>365 Versículos - Palavras de Fé para Cada Dia</title>
@@ -925,18 +942,48 @@
 
         // Simulated purchase notifications
         function showPurchaseNotification() {
-            const names = ['Maria', 'João', 'Ana', 'Carlos', 'Juliana','Amaral','Bruna','Alberto','Mariana','Luciana','Helena', 'Alice', 'Laura', 'Maria Alice', 'Sophia', 
-            'Manuela', 'Cecília', 'Isabella', 'Luísa', 'Eloá', 'Heloísa', 'Júlia', 'Ayla', 'Aurora', 'Valentina','Maya','Miguel','Arthur','Gael','Théo','Heitor','Ravi',
-            'Davi','Bernardo','Noah','Gabriel'];
+            const names = ['Maria','João','Ana','Carlos','Juliana','Amaral','Bruna','Alberto','Mariana','Luciana','Helena','Alice','Laura','Maria Alice','Sophia',
+            'Manuela','Cecília','Isabella','Luísa','Eloá','Heloísa','Júlia','Ayla','Aurora','Valentina','Maya','Miguel','Arthur','Gael','Théo','Heitor','Ravi','Davi',
+            'Bernardo','Noah','Gabriel','Lucas','Matheus','Pedro','Felipe','Rafael','Daniel','Diego','André','Eduardo','Gustavo','Henrique','Vitor','Bruno','Caio',
+            'Leandro','Thiago','Rodrigo','Vinícius','Igor','Samuel','Alexandre','Leonardo','Fernando','Fábio','Paulo','Renato','Marcelo','César','Ricardo','Otávio','Enzo',
+            'Benício','Anthony','Ian','Bryan','Kevin','Murilo','Pietro','Lorenzo','Enrico','Joana','Beatriz','Camila','Carolina','Daniela','Patrícia','Fernanda',
+            'Renata','Natália','Bianca','Letícia','Amanda','Vanessa','Priscila','Débora','Tatiane','Aline','Raquel','Gabriela','Larissa','Isadora','Milena','Esther',
+            'Rebeca','Sara','Clara','Yasmin'];
+
             const randomName = names[Math.floor(Math.random() * names.length)];
             
-            const times = ['alguns segundos','3 minutos','10 minutos','1 hora','30 minutos','8 minutos','agora pouco','42 minutos']
+            const times = ['alguns segundos','1 minuto','2 minutos','3 minutos','5 minutos','8 minutos','10 minutos','15 minutos','20 minutos',
+            '30 minutos','40 minutos','42 minutos','45 minutos','50 minutos','1 hora','1 hora e 10 minutos','1 hora e 30 minutos','2 horas',
+            '2 horas e 15 minutos','3 horas','agora pouco','há pouco','acabou de acontecer','há instantes','há alguns minutos'];
+
             
             const randomTime = times[Math.floor(Math.random() * times.length)];
 
             const kits = ['Kit básico','Kit completo + Bônus']
 
             const randomkit = kits[Math.floor(Math.random() * kits.length)];
+
+            const cidades = ['São Paulo','Rio de Janeiro','Belo Horizonte','Brasília','Salvador','Fortaleza','Recife','Olinda','Jaboatão dos Guararapes','Natal',
+            'João Pessoa','Campina Grande','Maceió','Aracaju','Teresina','São Luís','Belém','Ananindeua','Manaus','Boa Vista','Porto Velho','Rio Branco','Palmas',
+            'Goiânia','Aparecida de Goiânia','Anápolis','Cuiabá','Várzea Grande','Campo Grande','Dourados','Curitiba','Londrina','Maringá','Ponta Grossa','Cascavel',
+            'Foz do Iguaçu','Florianópolis','São José','Joinville','Blumenau','Chapecó','Porto Alegre','Canoas','Gravataí','Novo Hamburgo','Caxias do Sul','Pelotas',
+            'Santa Maria','Passo Fundo','Uruguaiana','Santa Cruz do Sul','São Leopoldo','Viamão','Alvorada','Esteio','Sapucaia do Sul','Bagé','Santana do Livramento',
+            'Rio Grande','Torres','Vitória','Vila Velha','Serra','Cariacica','Guarapari','Colatina','Linhares','Cachoeiro de Itapemirim','Alegre','Anchieta','Niterói',
+            'São Gonçalo','Duque de Caxias','Nova Iguaçu','Belford Roxo','São João de Meriti','Petrópolis','Teresópolis','Volta Redonda','Barra Mansa','Resende',
+            'Angra dos Reis','Cabo Frio','Macaé','Campos dos Goytacazes','Araruama','Rio das Ostras','Maricá','Itaboraí','Queimados','Santos','São Vicente','Guarujá',
+            'Praia Grande','Cubatão','Campinas','Sorocaba','Ribeirão Preto','São José dos Campos','Taubaté','Jacareí','Pindamonhangaba','Caraguatatuba','Ubatuba','Ilhabela',
+            'Bauru','Marília','Presidente Prudente','Araçatuba','Birigui','Franca','Barretos','Catanduva','São Carlos','Araraquara','Limeira','Piracicaba','Americana',
+            'Santa Bárbara d’Oeste','Paulínia','Indaiatuba','Jundiaí','Itu','Salto','Itatiba','Mogi das Cruzes','Suzano','Poá','Ferraz de Vasconcelos','Guarulhos',
+            'Osasco','Barueri','Santana de Parnaíba','Carapicuíba','Itapevi','Cotia','Taboão da Serra','Embu das Artes','Diadema','Mauá','Santo André',
+            'São Bernardo do Campo','São Caetano do Sul','Ribeirão Pires','Rio Claro','Araras','Leme','São João da Boa Vista','Poços de Caldas','Pouso Alegre',
+            'Varginha','Lavras','Uberaba','Uberlândia','Patos de Minas','Araxá','Divinópolis','Sete Lagoas','Conselheiro Lafaiete','Ouro Preto','Mariana','Itabira',
+            'Ipatinga','Coronel Fabriciano','Timóteo','Governador Valadares','Teófilo Otoni','Montes Claros','Januária','Pirapora','Juiz de Fora','Barbacena',
+            'São João del-Rei','Muriaé','Cataguases','Viçosa','Ponte Nova','Ubá','Manhuaçu','Caratinga','Feira de Santana','Vitória da Conquista','Itabuna','Ilhéus',
+            'Porto Seguro','Eunápolis','Barreiras','Luís Eduardo Magalhães','Juazeiro','Senhor do Bonfim','Petrolina','Juazeiro do Norte','Crato','Sobral','Caucaia',
+            'Maracanaú','Aquiraz','Parnaíba','Picos','Floriano'];
+
+            const randomcities = cidades[Math.floor(Math.random() * cidades.length)];
+
 
             const notification = document.createElement('div');
             notification.innerHTML = `
@@ -946,6 +993,7 @@
                         <div>
                             <p style="font-size: 0.875rem; color: #64748b; margin: 0;"><strong>${randomName}</strong> acabou de comprar</p>
                             <p style="font-size: 0.75rem; color: #94a3b8; margin: 0.25rem 0;">${randomkit}</p>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin: 0.25rem 0;">De ${randomcities}</p>
                             <p style="font-size: 0.75rem; color: #94a3b8; margin: 0;">${randomTime}</p>
                         </div>
                     </div>
