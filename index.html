@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>365 Versículos - Palavras de Fé para Cada Dia</title>
+    <meta name="description" content="365 versículos bíblicos selecionados para seu dia a dia. Download imediato em PDF de alta qualidade. Imprima e partilhe.">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #1e293b;
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-menu button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+
+        .nav-menu button:hover {
+            color: #3b82f6;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 4rem;
+            padding: 3rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 100%);
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 8vw, 3.75rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: #3b82f6;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e293b;
+            border: 2px solid #cbd5e1;
+            padding: 0.875rem 2rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .hero-image {
+            margin-top: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 3rem 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefit-card {
+            background: #f1f5f9;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .benefit-card:hover {
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: #e2e8f0;
+        }
+
+        .benefit-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            color: #64748b;
+        }
+
+        /* Inspire Section */
+        .inspire {
+            padding: 3rem 1rem;
+            background: #f8fafc;
+        }
+
+        .inspire-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .inspire-image {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .inspire-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .inspire-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 3rem 1rem;
+            background: linear-gradient(to bottom, #eff6ff, white);
+        }
+
+        .pricing-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-header span {
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .price-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .price-card.popular {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+            transform: scale(1.05);
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card-desc {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-amount {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-original {
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-size: 0.875rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            color: #64748b;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .features-list li.highlight {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .guarantee {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+        }
+
+        .guarantee h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .guarantee p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 3rem 1rem;
+            background: white;
+        }
+
+        .reviews-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 0.25rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-content {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #3b82f6;
+            overflow: hidden;
+        }
+
+        .reviewer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .reviewer-role {
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 3rem 1rem;
+            background: white;
+        }
+
+        .faq-content {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            background: #f8fafc;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 1.25rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 3rem 1rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col a,
+        .footer-col button {
+            color: #cbd5e1;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            padding: 0.25rem 0;
+            display: block;
+        }
+
+        .footer-col a:hover,
+        .footer-col button:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Utility */
+        .hidden-mobile {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hidden-mobile {
+                display: none;
+            }
+
+            .price-card.popular {
+                transform: scale(1);
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .benefits-grid,
+            .pricing-cards,
+            .review-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">📖 365Versículos</div>
+            <div class="nav-menu" id="navMenu">
+                <button onclick="scrollToSection('beneficios')">Benefícios</button>
+                <button onclick="scrollToSection('depoimentos')">Depoimentos</button>
+                <button onclick="scrollToSection('faq')">Dúvidas</button>
+                <button class="btn-primary" onclick="scrollToSection('precos')">Quero o Kit</button>
+            </div>
+            <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Uma Palavra de Deus <span class="highlight">para cada dia</span> do seu ano.</h1>
+            <p>365 versículos bíblicos selecionados com carinho, em formato PDF de alta qualidade. Imprima, decore, presenteie e fortaleça sua fé diariamente.</p>
+            
+            <div class="btn-group">
+                <button class="btn-primary" onclick="scrollToSection('precos')">Quero Meu Kit de Versículos →</button>
+                <button class="btn-secondary" onclick="scrollToSection('beneficios')">Saiba Mais</button>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.875rem; color: #64748b;">
+                <span>⬇️ Download Imediato</span>
+                <span>🔒 Compra Segura</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <div class="section-header">
+            <h2>Por que escolher este kit?</h2>
+            <p style="max-width: 48rem; margin: 1rem auto; color: #64748b;">Mais do que arquivos digitais, entregamos uma experiência de fé e conexão diária com a palavra de Deus.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">❤️</div>
+                <h3>Devocional Diário</h3>
+                <p>Comece cada manhã com uma nova inspiração bíblica para guiar seu dia.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🖨️</div>
+                <h3>Impressão Fácil</h3>
+                <p>Arquivos PDF em alta resolução, prontos para imprimir em casa ou na gráfica.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎁</div>
+                <h3>Presente Ideal</h3>
+                <p>Crie lembrancinhas personalizadas para grupos de oração e amigos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">✨</div>
+                <h3>Decoração com Propósito</h3>
+                <p>Embeleze seu lar com versículos que trazem paz e esperança ao ambiente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspire Section -->
+    <section class="inspire">
+        <div class="inspire-content">
+            <div class="section-header">
+                <h2>Comece o dia com a Palavra certa</h2>
+                <p>Versículos diários para trazer paz, direção e força espiritual em meio à correria do dia a dia.</p>
+            </div>
+            <div class="inspire-image">
+                <img src="https://i.ibb.co/6RNfyyLH/2073449-mulher-levanta-maos-para-o-ceu-gratis-foto.jpg" alt="Mulher levantando as mãos para o céu">
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="precos">
+        <div class="pricing-content">
+            <div class="pricing-header section-header">
+                <span>Oferta por Tempo Limitado</span>
+                <h2>Escolha o Kit Ideal para Você</h2>
+                <p style="max-width: 48rem; margin: 1rem auto; color: #64748b;">Acesso vitalício e imediato. Pague uma única vez e tenha versículos para a vida toda.</p>
+            </div>
+
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <h3>Kit Básico</h3>
+                    <p class="price-card-desc">Perfeito para começar sua jornada.</p>
+                    <div class="price-amount">R$ 10,00</div>
+                    <div class="price-original">R$ 49,90</div>
+                    <ul class="features-list">
+                        <li>365 Versículos em PDF</li>
+                        <li>Alta Resolução para Impressão</li>
+                        <li>Acesso Vitalício</li>
+                        <li>Suporte por E-mail</li>
+                    </ul>
+                    <button class="btn-primary" onclick="window.open('https://checkout.vltdigital.xyz/VCCL1O8SCN48', '_blank')" style="width: 100%;">Quero o Kit Básico</button>
+                </div>
+
+                <div class="price-card popular">
+                    <h3>Kit Completo + Bônus</h3>
+                    <p class="price-card-desc">A melhor escolha para abençoar sua família.</p>
+                    <div class="price-amount">R$ 19,90</div>
+                    <div class="price-original">R$ 97,00</div>
+                    <ul class="features-list">
+                        <li class="highlight">✓ Tudo do Kit Básico</li>
+                        <li class="highlight">✓ BÔNUS: Planner Devocional</li>
+                        <li class="highlight">✓ BÔNUS: Mapa mental dos livros da bíblia</li>
+                        <li class="highlight">✓ BÔNUS: Marca-páginas para Imprimir</li>
+                        <li>Acesso Vitalício</li>
+                        <li>Prioridade no Suporte</li>
+                    </ul>
+                    <button class="btn-primary" onclick="window.open('https://checkout.vltdigital.xyz/VCCL1O8SCN49', '_blank')" style="width: 100%;">Quero o Kit Completo</button>
+                </div>
+            </div>
+
+            <div class="guarantee">
+                <h4>🛡️ Garantia Incondicional de 7 Dias</h4>
+                <p>Se você não amar o material, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="depoimentos">
+        <div class="reviews-content">
+            <div class="reviews-header section-header">
+                <div class="star-rating">⭐⭐⭐⭐⭐</div>
+                <h2>O que dizem quem já comprou</h2>
+                <p>Junte-se a centenas de pessoas que já transformaram sua rotina devocional.</p>
+            </div>
+
+            <div class="review-cards">
+                <div class="review-card">
+                    <div class="star-rating" style="justify-content: flex-start; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                    <div class="review-content">"O material se tornou essencial em minhas aulas. As crianças aguardam ansiosamente pelos versículos e levam a mensagem para casa com devoção genuína. Transformou nossa pedagogia espiritual."</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar"><img src="https://i.ibb.co/pVFQvsN/427756352-822366676571153-6850881123911766554-n.jpg" alt="Maria Silva"></div>
+                        <div>
+                            <div class="reviewer-name">Maria Silva</div>
+                            <div class="reviewer-role">Professora de Escola Dominical</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="star-rating" style="justify-content: flex-start; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                    <div class="review-content">"Cada amanhecer começamos com um versículo em família. Criou um ritual sagrado que fortaleceu nossa jornada espiritual e trouxe renovação diária. É verdadeiramente transformador."</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar"><img src="https://i.ibb.co/VW6TmHq4/photo-1566753323558-f4e0952af115.jpg" alt="Pedro Almeida"></div>
+                        <div>
+                            <div class="reviewer-name">Pedro Almeida</div>
+                            <div class="reviewer-role">Pai de Família</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="star-rating" style="justify-content: flex-start; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                    <div class="review-content">"Integrei os versículos em meu espaço pessoal e eles se tornaram uma âncora espiritual diária. A qualidade do material e a profundidade dos textos escolhidos são excepcionais. Não há comparação."</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar"><img src="https://i.ibb.co/MxwKnsHZ/536278473-1061600816134961-587690451197623643-n.jpg" alt="Ana Clara"></div>
+                        <div>
+                            <div class="reviewer-name">Ana Clara</div>
+                            <div class="reviewer-role">Empreendedora Espiritual</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq-content">
+            <h2>Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Como recebo o material?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Assim que o pagamento for confirmado, você receberá um e-mail com um link exclusivo para baixar todos os arquivos. O acesso é imediato e você pode baixar quantas vezes precisar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Posso imprimir em casa?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! Os arquivos foram formatados para serem impressos facilmente em qualquer impressora doméstica (papel A4) ou em gráficas rápidas para um acabamento mais profissional.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Por quanto tempo tenho acesso?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    O acesso é vitalício! Uma vez comprado, o material é seu para sempre. Você pode baixar e salvar no seu computador ou celular.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quais são as formas de pagamento?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Aceitamos Pix e cartão de crédito. Ambos têm liberação imediata do acesso.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: white; margin-bottom: 1rem; font-weight: bold;">
+                        📖 365Versículos
+                    </div>
+                    <p style="font-size: 0.875rem; line-height: 1.5;">
+                        Nossa missão é levar a palavra de Deus para o cotidiano das pessoas de forma bela e inspiradora.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><button onclick="scrollToSection('beneficios')">Benefícios</button></li>
+                        <li><button onclick="scrollToSection('depoimentos')">Depoimentos</button></li>
+                        <li><button onclick="scrollToSection('precos')">Comprar</button></li>
+                        <li><button onclick="scrollToSection('faq')">Dúvidas</button></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 365Versículos. Todos os direitos reservados.</p>
+                <p style="margin-top: 0.5rem;">Feito com fé e carinho.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        }
+
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+
+            document.querySelectorAll('.faq-answer.active').forEach(el => {
+                if (el !== answer) {
+                    el.classList.remove('active');
+                    el.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
+                }
+            });
+        }
+
+        // Simulated purchase notifications
+        function showPurchaseNotification() {
+            const names = ['Maria', 'João', 'Ana', 'Carlos', 'Juliana','Amaral','Bruna','Alberto','Mariana','Luciana','Helena', 'Alice', 'Laura', 'Maria Alice', 'Sophia', 
+            'Manuela', 'Cecília', 'Isabella', 'Luísa', 'Eloá', 'Heloísa', 'Júlia', 'Ayla', 'Aurora', 'Valentina','Maya','Miguel','Arthur','Gael','Théo','Heitor','Ravi',
+            'Davi','Bernardo','Noah','Gabriel'];
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            
+            const times = ['alguns segundos','3 minutos','10 minutos','1 hora','30 minutos','8 minutos','agora pouco','42 minutos']
+            
+            const randomTime = times[Math.floor(Math.random() * times.length)];
+
+            const kits = ['Kit básico','Kit completo + Bônus']
+
+            const randomkit = kits[Math.floor(Math.random() * kits.length)];
+
+            const notification = document.createElement('div');
+            notification.innerHTML = `
+                <div style="background: white; padding: 1rem; border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); max-width: 300px; animation: slideIn 0.3s ease;">
+                    <div style="display: flex; gap: 0.75rem;">
+                        <img src="https://i.ibb.co/7xWRP5Fc/47813645-fofa-jesus-segurando-biblia.jpg" alt="Jesus" style="width: 60px; height: 60px; border-radius: 0.5rem; object-fit: cover;">
+                        <div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;"><strong>${randomName}</strong> acabou de comprar</p>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin: 0.25rem 0;">${randomkit}</p>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin: 0;">${randomTime}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '9999';
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        setInterval(showPurchaseNotification, 8000);
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
